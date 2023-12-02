@@ -1,0 +1,22 @@
+spring:
+  profiles:
+    active: local
+  config:
+    import:
+      - 'optional:classpath:http-application.yml'
+      - 'optional:classpath:datastore-application.yml'
+      - 'optional:classpath:domain-application.yml'
+
+management:
+  endpoints:
+    web:
+      base-path: /
+      exposure:
+        include: health, prometheus
+      path-mapping:
+        health: /health
+        prometheus: /metrics
+
+springdoc:
+  swagger-ui:
+    path: /docs
